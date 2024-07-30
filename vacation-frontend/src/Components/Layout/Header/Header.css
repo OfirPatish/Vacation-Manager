@@ -1,0 +1,24 @@
+@keyframes colorChange {
+  0% {
+    color: #ffd700;
+  } /* Gold */
+  20% {
+    color: #ff8c00;
+  } /* Dark Orange */
+  40% {
+    color: #1e90ff;
+  } /* Dodger Blue */
+  60% {
+    color: #32cd32;
+  } /* Lime Green */
+  80% {
+    color: #ff69b4;
+  } /* Hot Pink */
+  100% {
+    color: #ffd700;
+  } /* Gold */
+}
+
+.beachIcon {
+  animation: colorChange 5s infinite;
+}

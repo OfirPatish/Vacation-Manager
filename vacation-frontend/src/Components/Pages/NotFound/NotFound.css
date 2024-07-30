@@ -1,0 +1,24 @@
+.NotFound {
+  text-align: center;
+  padding: 50px;
+  font-family: Arial, sans-serif;
+}
+
+.NotFound h1 {
+  font-size: 48px;
+  color: #ff0000;
+}
+
+.NotFound p {
+  font-size: 18px;
+  color: #333;
+}
+
+.NotFound a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.NotFound a:hover {
+  text-decoration: underline;
+}

@@ -1,0 +1,17 @@
+body {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+.main-header {
+  height: 60px;
+}
+
+.custom-toast-container {
+  top: calc(var(--header-height) + 1rem);
+}
+
+.custom-toast {
+  background-color: #333333;
+  color: #ffffff;
+}
