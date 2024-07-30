@@ -22,6 +22,7 @@ function AddVacation(): JSX.Element {
   const [uploading, setUploading] = useState(false); // State to manage uploading state
   const [isAdmin, setIsAdmin] = useState(false); // State to check if the user is an admin
   const [selectedImage, setSelectedImage] = useState<File | null>(null); // State to store the selected image file
+  const [imageError, setImageError] = useState<string | null>(null); // State to store image error message
   const {
     register,
     handleSubmit,
@@ -47,13 +48,27 @@ function AddVacation(): JSX.Element {
   // Handle image change event
   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files[0]) {
-      setSelectedImage(event.target.files[0]);
+      const file = event.target.files[0];
+      const validImageTypes = ["image/jpeg", "image/png", "image/gif"];
+      if (!validImageTypes.includes(file.type)) {
+        setImageError("Only image files (jpeg, png, gif) are allowed");
+        setSelectedImage(null);
+        return;
+      }
+      setSelectedImage(file);
+      setImageError(null); // Clear any previous image error
       notify.success("Image selected. Click 'Add Vacation' to apply changes.");
     }
   };
 
   // Handle form submission
   const onSubmit: SubmitHandler<VacationFormInputs> = async (data) => {
+    if (!selectedImage) {
+      setImageError("Image is required");
+      return;
+    }
+    setImageError(null);
+
     const formData = new FormData();
     formData.append("destination", data.destination);
     formData.append("summary", data.summary);
@@ -176,6 +191,11 @@ function AddVacation(): JSX.Element {
                   Upload Image
                   <input type="file" hidden onChange={handleImageChange} />
                 </Button>
+                {imageError && (
+                  <Typography color="error" variant="body2" align="center">
+                    {imageError}
+                  </Typography>
+                )}
               </Grid>
             </Grid>
 
