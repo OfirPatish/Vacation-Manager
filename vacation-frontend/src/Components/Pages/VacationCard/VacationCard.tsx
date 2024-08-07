@@ -121,7 +121,7 @@ const VacationCard: React.FC<VacationCardProps> = ({ vacation, handleFollow, isA
             sx={{
               whiteSpace: "pre-wrap",
               wordWrap: "break-word",
-              maxHeight: "100px",
+              maxHeight: "120px",
               overflowY: "auto",
             }}
             className="custom-scrollbar"
